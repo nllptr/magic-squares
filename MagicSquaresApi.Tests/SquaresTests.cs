@@ -84,6 +84,40 @@ namespace MagicSquaresApi.Tests
             // Assert
             Assert.NotSame(result1, result2); // Ensure the cache is refreshed
         }
+
+        [Fact]
+        public void AddSquare_ThrowsArgumentException_WhenRepeatingSquare()
+        {
+            // Arrange
+            var fileService = new InMemoryFileService();
+            var hexColor = "#FFFFFF";
+            var squares = new Squares(fileService);
+            squares.AddSquare(hexColor);
+
+            // Act & Assert
+            // Ensure the same square cannot be added twice in succession
+            Assert.Throws<ArgumentException>(() => squares.AddSquare(hexColor));
+        }
+
+        [Fact]
+        public void AddSquare_AllowsRepeating_IfNotSuccession()
+        {
+            // Arrange
+            var fileService = new InMemoryFileService();
+            var hexColor1 = "#FFFFFF";
+            var hexColor2 = "#000000";
+            var squares = new Squares(fileService);
+
+            // Act
+            // Ensure it's OK to repeat hex codes as long as they're not in succession
+            squares.AddSquare(hexColor1);
+            squares.AddSquare(hexColor2);
+            squares.AddSquare(hexColor1);
+
+            // Assert
+            // Ensure the same square cannot be added twice in succession
+            Assert.Equal(new[] { hexColor1, hexColor2, hexColor1 }, squares.GetAllSquares());
+        }
     }
 
     public class InMemoryFileService : IFileService

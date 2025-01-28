@@ -9,6 +9,7 @@ namespace MagicSquaresApi
         private readonly IFileService _fileService;
         private List<string> _cachedSquares = [];
         private bool _isCacheDirty = true;
+        private string ? _lastSquare;
 
         public Squares(IFileService fileService)
         {
@@ -27,15 +28,12 @@ namespace MagicSquaresApi
 
         public void AddSquare(string hexColor)
         {
-            if (IsValidHexColor(hexColor))
-            {
-                AppendSquareToFile(hexColor);
-                _isCacheDirty = true;
-            }
-            else
-            {
-                throw new ArgumentException("Invalid hex color code", nameof(hexColor));
-            }
+            if (!IsValidHexColor(hexColor)) throw new ArgumentException("Invalid hex color code", nameof(hexColor));
+            if (_lastSquare == hexColor) throw new ArgumentException("Duplicate hex color code", nameof(hexColor));
+
+            AppendSquareToFile(hexColor);
+            _isCacheDirty = true;
+            _lastSquare = hexColor;
         }
 
         private static bool IsValidHexColor(string hexColor)
