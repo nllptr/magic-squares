@@ -1,5 +1,21 @@
 # magic-squares
 
+## Installing dependencies
+
+1. Get VS Code and Docker installed.
+2. Add the "Dev Containers" extension installed in VS Code.
+3. In VS Code, open the command palette and type "Dev Containers". Select the alternative "Open Folder in Container...", and select the project root folder.
+4. Once the container has started:
+   - Install the backend dependencies by `cd`:ing into MagicSquaresApi in the integrated terminal and run `dotnet restore`.
+   - Install the frontend dependencies by `cd`:ing into TBD in the integrated terminal and run `npm install`.
+
+## Running it
+
+### Backend
+
+Using VS Code's integrated terminal, run `dotnet run` from the MagicSquaresApi to run the backend.
+You can test the API using Scalar [>HERE<](http://localhost:5011/scalar/v1).
+
 ## Requirements
 
 - Frontend
