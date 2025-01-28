@@ -13,5 +13,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapGet("/", () => "Hello World!");
+app.MapGet("/squares", () => new List<int>());
 
 app.Run();
