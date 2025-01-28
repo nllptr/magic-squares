@@ -46,4 +46,7 @@ I've run through a .NET + React tutorial on Microsoft Learn. Takeaways:
 1. I've probably found the `dotnet` versions of the Maven/Gradle stuff I'm used to.
 2. The tutorial was using devcontainers. I've never used it before, but it was nice, so I added it to this project.
 
-Now I have my dev environment sorted, so next on the agenda is to set up the backend project.
+I've started the backend project. Added Scalar, which seems nice. I think I have all the business logic sorted for the backend. I wrote that in a
+separate class, and added some unit test for it with an in-memory version of the file writer.
+
+Next time, I'll have to implement the "real" file writer and stich up the API. Then we're off to frontend land for a bit.
