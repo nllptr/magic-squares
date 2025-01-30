@@ -72,11 +72,4 @@ namespace MagicSquaresApi
             _fileService.WriteLine(FilePath, JsonSerializer.Serialize(hexColor));
         }
     }
-
-    public interface IFileService
-    {
-        bool Exists(string path);
-        string[] ReadAllLines(string path);
-        void WriteLine(string path, string content);
-    }
 }

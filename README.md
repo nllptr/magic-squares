@@ -50,3 +50,6 @@ I've started the backend project. Added Scalar, which seems nice. I think I have
 separate class, and added some unit test for it with an in-memory version of the file writer.
 
 Next time, I'll have to implement the "real" file writer and stich up the API. Then we're off to frontend land for a bit.
+
+### 2025-01-29
+I just realized that the spec says that the backend should store the JSON to a file. A valid JSON file must contain one single top.level JSON object. That means my "append" strategy falls completely on the face. I'll reconsider.
