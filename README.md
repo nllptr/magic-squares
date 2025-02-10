@@ -53,3 +53,6 @@ Next time, I'll have to implement the "real" file writer and stich up the API. T
 
 ### 2025-01-29
 I just realized that the spec says that the backend should store the JSON to a file. A valid JSON file must contain one single top.level JSON object. That means my "append" strategy falls completely on the face. I'll reconsider.
+
+### 2025-02-10
+I realized today that my plan might still work, I just need to do a file overwrite rather than an append. It's a pity that the append didn't work, it would have been efficient. I still get some efficiency benefits since I'm only appending to the in-memory structure, i e no tricky inserts in multi dimensional arrays. The performance gains are probably negligable, but it still keeps the interface between different layers of the stack neat.
